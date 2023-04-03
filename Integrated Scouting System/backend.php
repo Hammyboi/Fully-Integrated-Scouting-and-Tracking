@@ -66,7 +66,7 @@
     $read_result = mysqli_query($conn, $read);
     if (mysqli_num_rows($read_result) > 0) {
         echo "<h1>Duplicate Information</h1>";
-        //header('Location: index.php');
+        //header('Location: index.html');
         //not needed since it auto-closes now
     }
 
@@ -77,13 +77,13 @@
     }
     //because some reason the duplicate protection fails, do it again
     catch(Exception $e){
-        //header('Location: index.php');
+        //header('Location: index.html');
         //not needed since it auto-closes now
     }
     if($write)
     {
         echo "<h1>Entries added!</h1><p>redirecting...</p>";
-        //header('Location: index.php');
+        //header('Location: index.html');
         //not needed since it auto-closes now
     }
     mysqli_close($conn);
