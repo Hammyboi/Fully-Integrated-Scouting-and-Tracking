@@ -3,7 +3,7 @@
 <head>
     <title>Team 3181 Scouting(Fully Contained Offline Client)</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <script type="text/javascript">
+        <script type="text/javascript">
         // alignment pattern
         adelta = [
           0, 11, 15, 19, 23, 27, 31, // force 1 pat
@@ -804,51 +804,74 @@
         }
         </script>
         <style>
-        body{
-            margin:0px;
-            padding:0px;
-            background-color: black;
-        }
-        .increment{
-            margin:0px;
-            font-size:xx-large;
-        }
-        h1, h2, h3, p, label, h6{
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            color: #f4d;
-            text-align:center;
-            
-        }
-        p{
-            margin:8px;
-        }
-        h3{
-            margin-top:32px;
-            margin-bottom:18px;
-            font-size:x-large;
-        }
-        input, label{
-            text-align: center;
-            font-size:larger;
-        }
-        input[type="number"]{
-            width:8%;
-            font-size:xx-large;
-        }
-        input[type="radio"], input[type="checkbox"]{
-            align-items: center;
-        }
-        input[type="number"].BIG{
-            width:12%;
-        }
-        input[type="range"]{
-            width:80%;
-        }
+body{
+    margin:0px;
+    padding:0px;
+    background-color: black;
+}
+.increment{
+    margin:0px;
+    font-size:xx-large;
+}
+h1, h2, h3, p, h6{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #f4d;
+    text-align:center;
+    
+}
+p{
+    margin:8px;
+}
+label{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #ffafd8;
+    text-align:center;
+}
+h3{
+    margin-top:32px;
+    margin-bottom:18px;
+    font-size:x-large;
+}
+h1{
+    margin-bottom:36px;
+}
+h1.title{
+    color:pink;
+    font-weight:900;
+    margin:10%;
+    font-size:48px;
+}
+input, label{
+    text-align: center;
+    font-size:larger;
+}
+input[type="number"]{
+    width:8%;
+    font-size:xx-large;
+}
+input[type="radio"], input[type="checkbox"]{
+    align-items: center;
+}
+input[type="number"].BIG{
+    width:30%;
+}
+input[type="range"]{
+    width:80%;
+}
+.qrdiv{
+    text-align:center;
+    margin:auto;
+}
+.qrcode{
+    width:80%;
+    max-height:80%;
+    margin:10%;
+}
         </style>
 </head>
 <body onload="setupqr()">
     <div class="scouting_form">
-    <h1>Team 3181 Scouting</h1>
+        <h1 class="title">Team 3181 Scouting</h1>
     <!-- Simple JS to implement buttons -->
     <script>
     function increment(id) {
@@ -1082,11 +1105,11 @@
         
     </form>
 </div>
-<div id="qrdiv" style="width:100%;">
 <form id="qrinp">
 
 </form>
-    <canvas id="qrcanv"></canvas>
+<div id="qrdiv" class="qrdiv">
+    <canvas id="qrcanv" class="qrcode"></canvas>
 </div>
 </body>
 </html>

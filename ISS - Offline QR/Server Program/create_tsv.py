@@ -5,4 +5,4 @@ header = "Scouter Initials|Match Number|Robot|Team Number|No Show|Starting Locat
 with open("config.toml", "rb") as f:
     config = tomllib.load(f)
 with open(config["output_file"], "w") as file:
-    file.write(header)
+    file.write(header + "\n")
