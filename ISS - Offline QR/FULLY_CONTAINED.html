@@ -710,7 +710,7 @@
         var wd, ht, qrc;
         function setupqr(){
         //    window.scrollTo(0,1)
-            wd = window.innerWidth-10;
+            wd = window.innerWidth-20;
             ht = window.innerHeight-10;
             mp = document.getElementById("mapcanv");
         
@@ -727,60 +727,60 @@
             qrc.canvas.height = ht;
             qrc.fillStyle = '#eee';
             qrc.fillRect(0,0,wd,ht);
-        
+            document.getElementById("qrcanv").style.display = "none";
         }
         
         function doqr() {
             //setting up the data because James was lazy
             d = document;
-            inputs = [];
-            inputs.push(d.inputs.names.value);
-            inputs.push(d.inputs.match.value);
-            inputs.push(d.inputs.robot.value);
-            inputs.push(d.inputs.teamnumber.value);
-            inputs.push(d.inputs.noshow.checked);
-            inputs.push(d.inputs.location.value);
-            inputs.push(d.inputs.mobility.checked); //make sure mobility goes here, database hates me
-            inputs.push(d.inputs.auto_upper_cone.value);
-            inputs.push(d.inputs.auto_middle_cone.value);
-            inputs.push(d.inputs.auto_lower_cone.value);
-            inputs.push(d.inputs.auto_upper_cube.value);
-            inputs.push(d.inputs.auto_middle_cube.value);
-            inputs.push(d.inputs.auto_lower_cube.value);
-            inputs.push(d.inputs.auto_pickup.checked);
-            inputs.push(d.inputs.auto_dock_engage.value);
-            inputs.push(d.inputs.teleop_upper_cone.value);
-            inputs.push(d.inputs.teleop_middle_cone.value);
-            inputs.push(d.inputs.teleop_lower_cone.value);
-            inputs.push(d.inputs.teleop_upper_cube.value);
-            inputs.push(d.inputs.teleop_middle_cube.value);
-            inputs.push(d.inputs.teleop_lower_cube.value);
+            inputs_list = [];
+            inputs_list.push(d.inputs.names.value);
+            inputs_list.push(d.inputs.match.value);
+            inputs_list.push(d.inputs.robot.value);
+            inputs_list.push(d.inputs.teamnumber.value);
+            inputs_list.push(d.inputs.noshow.checked);
+            inputs_list.push(d.inputs.location.value);
+            inputs_list.push(d.inputs.mobility.checked); //make sure mobility goes here, database hates me
+            inputs_list.push(d.inputs.auto_upper_cone.value);
+            inputs_list.push(d.inputs.auto_middle_cone.value);
+            inputs_list.push(d.inputs.auto_lower_cone.value);
+            inputs_list.push(d.inputs.auto_upper_cube.value);
+            inputs_list.push(d.inputs.auto_middle_cube.value);
+            inputs_list.push(d.inputs.auto_lower_cube.value);
+            inputs_list.push(d.inputs.auto_pickup.checked);
+            inputs_list.push(d.inputs.auto_dock_engage.value);
+            inputs_list.push(d.inputs.teleop_upper_cone.value);
+            inputs_list.push(d.inputs.teleop_middle_cone.value);
+            inputs_list.push(d.inputs.teleop_lower_cone.value);
+            inputs_list.push(d.inputs.teleop_upper_cube.value);
+            inputs_list.push(d.inputs.teleop_middle_cube.value);
+            inputs_list.push(d.inputs.teleop_lower_cube.value);
             if(d.inputs.ground.checked == 1 && d.inputs.substation.checked == 1){
-                inputs.push("BOTH");
+                inputs_list.push("BOTH");
             }else{
                 if(d.inputs.ground.checked == 1){
-                    inputs.push("GROUND");
+                    inputs_list.push("GROUND");
                 }
                 if(d.inputs.substation.checked == 1){
-                    inputs.push("SUBSTATION");
+                    inputs_list.push("SUBSTATION");
                 }
                 if(d.inputs.ground.checked == 0 && d.inputs.substation.checked == 0){
-                    inputs.push("NONE")
+                    inputs_list.push("NONE")
                 }
             }
-            inputs.push(d.inputs.links.value);
-            inputs.push(d.inputs.early_endgame.checked);
-            inputs.push(d.inputs.endgame.value);
-            inputs.push(d.inputs.num_docked.value);
-            inputs.push(d.inputs.skill.value);
-            inputs.push(d.inputs.defense.value);
-            inputs.push(d.inputs.died.checked);
-            inputs.push(d.inputs.tipped.checked);
-            inputs.push(d.inputs.card.checked);
-            inputs.push(d.inputs.damage.checked);
-            inputs.push(d.inputs.comments.value);
+            inputs_list.push(d.inputs.links.value);
+            inputs_list.push(d.inputs.early_endgame.checked);
+            inputs_list.push(d.inputs.endgame.value);
+            inputs_list.push(d.inputs.num_docked.value);
+            inputs_list.push(d.inputs.skill.value);
+            inputs_list.push(d.inputs.defense.value);
+            inputs_list.push(d.inputs.died.checked);
+            inputs_list.push(d.inputs.tipped.checked);
+            inputs_list.push(d.inputs.card.checked);
+            inputs_list.push(d.inputs.damage.checked);
+            inputs_list.push(d.inputs.comments.value);
             
-            input = inputs.join("|");
+            input = inputs_list.join("|");
         
             ecclevel = 1;
             qf = genframe(input);
@@ -800,7 +800,17 @@
                 for( j = 0; j < width; j++ )
                     if( qf[j*width+i] )
                         qrc.fillRect(px*(4+i),px*(4+j),px,px)
+            document.getElementById("qrcanv").style.display = "block";
             return false;
+        }
+        function hideqr(){
+            document.getElementById("qrcanv").style.display = "none";
+        }
+        function resetdata(){
+            hideqr();
+            names = document.inputs.names.value;
+            console.log(names);
+            setTimeout(function() {document.inputs.names.value = names;}, 0);
         }
         </script>
         <style>
@@ -889,7 +899,7 @@ input[type="range"]{
         <p><label for="names">Scouter's initials:</label></p>
         <p><input type="text" id="names" name="names" required></p><br>
         <p><label for="match">Match Number:</label></p>
-        <p><input type="number" id="match" name="match" value=0 class="BIG"></p>
+        <p><input type="number" id="match" name="match" class="BIG"></p>
         <h3>Robot:</h3>
         <p>
         <input type="radio" id="red1" name="robot" value="red1">
@@ -1101,14 +1111,14 @@ input[type="range"]{
         <label for="comments">&emsp;Comments</label><br>
         &emsp;<textarea id="comments" name="comments" cols="30" rows="5" required></textarea><br><br><br>
         <button type="submit" onclick="doqr()"><h2>Make QR Code</h2></button>
-        <button type="reset"><h2>Clear Data</h2></button></a>
+        <button type="reset" onclick="resetdata()"><h2>Clear Data</h2></button></a>
         
     </form>
 </div>
 <form id="qrinp">
 
 </form>
-<div id="qrdiv" class="qrdiv">
+<div id="qrdiv" class="qrdiv" style="width:90%">
     <canvas id="qrcanv" class="qrcode"></canvas>
 </div>
 </body>

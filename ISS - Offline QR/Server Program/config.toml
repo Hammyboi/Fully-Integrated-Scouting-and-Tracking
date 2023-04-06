@@ -1,5 +1,5 @@
-# the .tsv file to write to
-output_file = "scouting.tsv"
+# the .csv file to write to
+output_file = "scouting.csv"
 database_file = "scouting.db"
 image_dir = "images"
 camera_id = 0
