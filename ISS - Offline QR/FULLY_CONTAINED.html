@@ -1084,10 +1084,16 @@ input[type="range"]{
         <input type="radio" id="engaged" name="endgame" value="DOCK ENGAGE">
         <label for="engaged">Engaged</label>
         </p><br>
-        <label for="num_docked"><h3 style="margin:0px;">Number of Docked Robots</h3></label>
+        <label for="num_docked"><h3 style="margin:0px;" id="textNumDocked">Number of Docked Robots: 0</h3></label>
         <p>
         <input type="range" id="num_docked" name="num_docked" min="0" max="3" step="1" value="0">
         </p>
+        <script>
+            const slider = document.getElementById("num_docked");
+            slider.addEventListener("input", () => 
+            {document.getElementById("textNumDocked").textContent = "Number of Docked Robots: " + slider.value;}
+                );
+        </script>
 
         <h1>Post-Match</h1>
         <p><label for="skill">Skill of Driver and Operator</label></p>
