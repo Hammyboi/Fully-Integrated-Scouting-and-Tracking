@@ -1,0 +1,236 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(0, 0, 0);
+}
+
+.increment {
+    margin: 0px;
+    font-size: xx-large;
+}
+
+.titleBox {
+    height: 75px;
+    width: 100%;
+    background-color: rgb(255.0, 77.0, 155.0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subBox {
+    margin: 0 auto;
+    height: 75;
+    width: 275px;
+    background-color: rgb(255.0, 77.0, 155.0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.h1Font {
+    font-size: 32px;
+    /* same size as default h1 */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* example font family */
+    font-weight: bold;
+    /* example font weight */
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h6 {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(255.0, 77.0, 155.0);
+    text-align: center;
+
+}
+
+p,
+label {
+    margin: 8px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(255, 175, 216);
+    text-align: center;
+}
+
+h3 :not(.sliderText) {
+    margin-top: 32px;
+    margin-bottom: 18px;
+    font-size: x-large;
+}
+
+input,
+label {
+    text-align: center;
+    font-size: larger;
+}
+
+input[type="number"] {
+    width: 8%;
+    font-size: xx-large;
+    -moz-appearance: textfield;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    align-items: center;
+    max-width: 500px;
+}
+
+input[type="number"].BIG {
+    width: 175px;
+    height: 50;
+    -moz-appearance: textfield;
+}
+
+input[type="range"] {
+    width: 80%;
+    max-width: 500px;
+}
+
+input[type="text"].initials {
+    width: 75px;
+    height: 50;
+}
+
+.radio-group {
+    display: flex;
+    justify-content: center;
+}
+
+/* 
+.radio-group label {
+    margin-right: 0 50px;
+} */
+.qrtext {
+    color: white;
+    text-align: center;
+}
+
+* {
+    touch-action: manipulation;
+}
+
+.sliderText {
+    width: 80%;
+    max-width: 500px;
+    display: inline;
+}
+
+.table {
+    display: table;
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+}
+
+.tr {
+    display: table-row;
+}
+
+.leftAligned {
+    display: table-cell;
+    width: 25%;
+}
+
+.centerLeftAligned {
+    display: table-cell;
+    text-align: center;
+    width: 37.5%;
+}
+
+.centerAligned {
+    display: table-cell;
+    text-align: center;
+    width: 50%;
+}
+
+.centerRightAligned {
+    display: table-cell;
+    text-align: center;
+    width: 37.5%;
+}
+
+.rightAligned {
+    display: table-cell;
+    text-align: right;
+    width: 25%;
+}
+
+table {
+    width: 80%;
+    max-width: 500px;
+    margin: auto;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+h3.increment {
+    text-align: center;
+    line-height: 1;
+}
+
+button {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.container {
+    width: 80%;
+    max-width: 500px;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.radio_container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #cecece;
+    width: 280px;
+    height: 50px;
+    border-radius: 9999px;
+    box-shadow: inset 0.5px 0.5px 2px 0 rgba(0, 0, 0, 0.15);
+}
+
+input[type="radio"].autoThings {
+    appearance: none;
+    display: none;
+}
+
+input[type="radio"].autoThings:checked+label {
+    background-color: rgb(255, 175, 216);
+    ;
+    color: #000000;
+    font-weight: 900;
+    transition: 0.3s;
+}
+
+.autoDockLabel {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    border-radius: 9999px;
+    overflow: hidden;
+    transition: linear 0.3s;
+    color: #6e6e6edd;
+}
