@@ -5,37 +5,42 @@
         <title>Team 3181 Scouting</title>
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="app.js"></script>
 
         <script type="text/javascript">
                 var url;
                 var finalString;
                 var textFileUrl = null;
                 function send() {
-                        var name = $('#names').val();
-                        var matchNum = $('#match').val();
-                        var robotColor = $("input:radio[name=robot]:checked").val();
-                        var teamNum = $('#teamnumber').val();
+                        var host = document.getElementById('host').value;
+                        var username = document.getElementById('username').value;
+                        var password = document.getElementById('password').value;
+                        console.log(host);
+                        if(host == "" || username == "" || password == ""){
+                                window.alert('Please Enter Login Info!');
+                        }else{
+                        var name = document.getElementById('#names').value;
+                        var matchNum = document.getElementById('#match').value;
+                        var robotColor = document.getElementById("input:radio[name=robot]:checked").value;
+                        var teamNum = document.getElementById('#teamnumber').value;
                         var noShow = document.querySelector('#noshow:checked') !== null;
 
-                        var location = $("input:radio[name=startingLocation]:checked").val();
-                        var autoUpperCone = $('#auto_upper_cone').val();
-                        var autoMiddleCone = $('#auto_middle_cone').val();
-                        var autoLowerCone = $('#auto_lower_cone').val();
-                        var autoUpperCube = $('#auto_upper_cube').val();
-                        var autoMiddleCube = $('#auto_middle_cube').val();
-                        var autoLowerCube = $('#auto_lower_cube').val();
+                        var location = document.getElementById("input:radio[name=startingLocation]:checked").value;
+                        var autoUpperCone = document.getElementById('#auto_upper_cone').value;
+                        var autoMiddleCone = document.getElementById('#auto_middle_cone').value;
+                        var autoLowerCone = document.getElementById('#auto_lower_cone').value;
+                        var autoUpperCube = document.getElementById('#auto_upper_cube').value;
+                        var autoMiddleCube = document.getElementById('#auto_middle_cube').value;
+                        var autoLowerCube = document.getElementById('#auto_lower_cube').value;
                         var mobility = document.querySelector('#mobility:checked') !== null;
                         var autoPickup = document.querySelector('#auto_pickup:checked') !== null;
-                        var autoDock = $("input:radio[name=auto_dock_engage]:checked").val();
+                        var autoDock = document.getElementById("input:radio[name=auto_dock_engage]:checked").value;
 
-                        var upperCone = $('#teleop_upper_cone').val();
-                        var middleCone = $('#teleop_middle_cone').val();
-                        var lowerCone = $('#teleop_lower_cone').val();
-                        var upperCube = $('#teleop_upper_cube').val();
-                        var middleCube = $('#teleop_middle_cube').val();
-                        var lowerCube = $('#teleop_lower_cube').val();
+                        var upperCone = document.getElementById('#teleop_upper_cone').value;
+                        var middleCone = document.getElementById('#teleop_middle_cone').value;
+                        var lowerCone = document.getElementById('#teleop_lower_cone').value;
+                        var upperCube = document.getElementById('#teleop_upper_cube').value;
+                        var middleCube = document.getElementById('#teleop_middle_cube').value;
+                        var lowerCube = document.getElementById('#teleop_lower_cube').value;
                         var substation = document.querySelector('#substation:checked') !== null;
                         var ground = document.querySelector('#ground:checked') !== null;
                         var groundOrSub;
@@ -48,14 +53,14 @@
                         } else {
                                 groundOrSub = "NONE";
                         }
-                        var links = $('#links').val();
+                        var links = document.getElementById('#links').value;
                         var beforeEndgame = document.querySelector('#early_endgame:checked') !== null;
 
-                        var teleDock = $("input:radio[name=endgame]:checked").val();
-                        var numDock = $('#num_docked').val();
+                        var teleDock = document.getElementById("input:radio[name=endgame]:checked").value;
+                        var numDock = document.getElementById('#num_docked').value;
 
-                        var driveSkill = $('#skill').val();
-                        var defenseSkill = $('#defense').val();
+                        var driveSkill = document.getElementById('#skill').value;
+                        var defenseSkill = document.getElementById('#defense').value;
                         if (driveSkill == 1) {
                                 driveSkill = "Bad";
                         } else if (driveSkill == 2) {
@@ -80,7 +85,7 @@
                         var card = document.querySelector('#card:checked') !== null;
                         var damage = document.querySelector('#damage:checked') !== null;
 
-                        var comment = $('#comments').val();
+                        var comment = document.getElementById('#comments').value;
 
                         var finalArray = [name, matchNum, robotColor, teamNum, noShow, location, mobility, autoUpperCone,
                                 autoMiddleCone, autoLowerCone, autoUpperCube, autoMiddleCube, autoLowerCube,
@@ -89,44 +94,9 @@
                                 card, damage, comment];
                         finalString = finalArray.join("|");
                         console.log(finalString);
-                        url = 'https://api.qrserver.com/v1/create-qr-code/?data=' + finalString + '&amp;size=200000x200000';
-                        $('#barcode').attr('src', url);
-                        showQR();
-                }
-
-                function showQR() {
-                        const form = document.getElementById('scoutingForm');
-
-                        if (form.checkValidity()) {
-                                // Display the success image
-                                scouterInitial = $('#names').val();
-                                QR.style.display = 'block';
-                                document.getElementById("QRText").style.display = 'block';
-                                scrollToElement(document.getElementById("QRText"));
-                                hideErrorMessages();
-                                submitForm();
-
-                        } else {
-                                // Show error messages for the unfilled fields
-                                const fields = form.querySelectorAll(':required');
-
-                                fields.forEach((field) => {
-                                        if (!field.value) {
-                                                const errorMessage = document.getElementById(field.getAttribute("correspondingErrorId"));
-                                                errorMessage.style.display = 'block';
-                                        } else {
-                                                hideErrorMessages();
-                                        }
-                                });
-
-                                // Scroll to the first unfilled field
-                                const unfilledField = form.querySelector(':required:not(:valid)');
-                                unfilledField.scrollIntoView({ behavior: 'smooth' });
-                                scrollToElement(unfilledField);
-
                         }
-
                 }
+
 
                 function hideErrorMessages() {
 
@@ -154,11 +124,6 @@
                 }
 
 
-                function hideQR() {
-                        QR.style.display = 'none';
-                        document.getElementById("QRText").style.display = "none"
-                        $('#barcode').attr('src', "");
-                }
 
                 function scrollToElement(element) {
                         // Get the top offset position of the element
@@ -177,7 +142,6 @@
                 function resetForm() {
                         // Get the value of the element with the ID "myElement"
                         var scouterInitial = document.getElementById("names").value;
-
                         // Reset the form
                         document.getElementById("scoutingForm").reset();
 
@@ -185,7 +149,7 @@
                         // to the value of the element with the ID "myElement"
                         setTimeout(function () {
                                 document.getElementById("names").value = scouterInitial;
-                                document.getElementById("textNumDocked").textContent = "Number of Docked Robots: 0"
+                                document.getElementById("textNumDocked").textContent = "Number of Docked Robots: 0";
                                 hideAllErrorMessages();
                                 scrollToElement(document.getElementById("top"));
                         }, 0);
@@ -223,11 +187,6 @@
                                 });
                 }
         </script>
-        <style>
-                #barcode {
-                        display: none;
-                }
-        </style>
 </head>
 
 <body>
@@ -236,6 +195,25 @@
                 <div class="titleBox" id="top">
                         <img src="images/pittRoboticsPfp.png" alt="" style="width: 37px;" style="height: 37px;">
                         <p class="h1Font">Team 3181 Scouting</p>
+                </div>
+                <div class="login">
+                        
+                                <p class="h1Font" style="color:pink"><br><strong>LOGIN</strong></p>
+                        <form>
+                                <div style="text-align:right;margin-right:40%">
+                                <label for="host">Host:</label>
+                                <input type="input" id="host">
+                                </div>
+                                <!-- Username for logging and password -->
+                                <div style="text-align:right;margin-right:40%">
+                                <label for="username">Username:</label>
+                                <input type="input" id="username">
+                                </div>
+                                <div style="text-align:right;margin-right:40%">
+                                <label for="password">Password:</label>
+                                <input type="password" id="password">
+                                </div>
+                        </form>
                 </div>
 
                 <!-- Simple JS to implement buttons -->
@@ -712,36 +690,18 @@
                                         style="display: inline-block;">
                                         <h2>Clear Data</h2>
                                 </button>
-                                <br><br>
-
-                                <img id="barcode" style="display: none; margin:0 auto;" class="qrCode">
-                                <p id="qrtext" class="qrtext" style="display: none;">Something Went Wrong. Try Again.
-                                </p>
-                                <p id="QRText" style="display: none;"><b>Take a screenshot of this QR code and scan the
-                                                photo on James's
-                                                computer after
-                                                your mnatches are done.</b></p>
                         </div>
 
                         <script>
                                 const submitButton = document.getElementById('submit');
                                 const resetButton = document.getElementById('reset-button');
-                                const QR = document.getElementById('barcode');
-
+                                
                                 resetButton.addEventListener('click', (event) => {
-                                        hideQR();
                                         document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
                                 });
 
                                 submitButton.addEventListener('click', (event) => {
                                         event.preventDefault(); // Prevent the form from submitting
-                                        var screenWidth90 = window.innerWidth * 0.9;
-                                        var screenHeight90 = window.innerHeight * 0.9;
-                                        if (screenHeight90 < screenWidth90) {
-                                                screenWidth90 = screenHeight90;
-                                        }
-                                        document.getElementById("barcode").style.width = `${screenWidth90}px`;
-                                        document.getElementById("barcode").style.height = `${screenWidth90}px`;
                                         send();
                                 });
                         </script>
@@ -751,4 +711,4 @@
         </div>
 </body>
 
-</html>
+</html>document.getElementByIddocument.getElementById
