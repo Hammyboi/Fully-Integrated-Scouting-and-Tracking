@@ -759,7 +759,7 @@ function doqr() {
             inputs.push("SUBSTATION");
         }
         if(d.inputs.ground.checked == 0 && d.inputs.substation.checked == 0){
-            inputs.push("NONE")
+            inputs.push("NONE");
         }
     }
     inputs.push(d.inputs.links.value);

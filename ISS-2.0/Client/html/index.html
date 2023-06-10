@@ -5,42 +5,38 @@
         <title>Team 3181 Scouting</title>
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <script src="jquery.min.js"></script>
 
         <script type="text/javascript">
-                var url;
                 var finalString;
-                var textFileUrl = null;
-                function send() {
-                        var host = document.getElementById('host').value;
-                        var username = document.getElementById('username').value;
-                        var password = document.getElementById('password').value;
-                        console.log(host);
-                        if(host == "" || username == "" || password == ""){
-                                window.alert('Please Enter Login Info!');
-                        }else{
-                        var name = document.getElementById('#names').value;
-                        var matchNum = document.getElementById('#match').value;
-                        var robotColor = document.getElementById("input:radio[name=robot]:checked").value;
-                        var teamNum = document.getElementById('#teamnumber').value;
+
+                function remoteConnect() {
+                        var host = document.getElementById("host").value;
+                        var username = document.getElementById("username").value;
+                        var password = document.getElementById("password").value;
+                        var name = $('#names').val();
+                        var matchNum = $('#match').val();
+                        var robotColor = $("input:radio[name=robot]:checked").val();
+                        var teamNum = $('#teamnumber').val();
                         var noShow = document.querySelector('#noshow:checked') !== null;
 
-                        var location = document.getElementById("input:radio[name=startingLocation]:checked").value;
-                        var autoUpperCone = document.getElementById('#auto_upper_cone').value;
-                        var autoMiddleCone = document.getElementById('#auto_middle_cone').value;
-                        var autoLowerCone = document.getElementById('#auto_lower_cone').value;
-                        var autoUpperCube = document.getElementById('#auto_upper_cube').value;
-                        var autoMiddleCube = document.getElementById('#auto_middle_cube').value;
-                        var autoLowerCube = document.getElementById('#auto_lower_cube').value;
+                        var location = $("input:radio[name=startingLocation]:checked").val();
+                        var autoUpperCone = $('#auto_upper_cone').val();
+                        var autoMiddleCone = $('#auto_middle_cone').val();
+                        var autoLowerCone = $('#auto_lower_cone').val();
+                        var autoUpperCube = $('#auto_upper_cube').val();
+                        var autoMiddleCube = $('#auto_middle_cube').val();
+                        var autoLowerCube = $('#auto_lower_cube').val();
                         var mobility = document.querySelector('#mobility:checked') !== null;
                         var autoPickup = document.querySelector('#auto_pickup:checked') !== null;
-                        var autoDock = document.getElementById("input:radio[name=auto_dock_engage]:checked").value;
+                        var autoDock = $("input:radio[name=auto_dock_engage]:checked").val();
 
-                        var upperCone = document.getElementById('#teleop_upper_cone').value;
-                        var middleCone = document.getElementById('#teleop_middle_cone').value;
-                        var lowerCone = document.getElementById('#teleop_lower_cone').value;
-                        var upperCube = document.getElementById('#teleop_upper_cube').value;
-                        var middleCube = document.getElementById('#teleop_middle_cube').value;
-                        var lowerCube = document.getElementById('#teleop_lower_cube').value;
+                        var upperCone = $('#teleop_upper_cone').val();
+                        var middleCone = $('#teleop_middle_cone').val();
+                        var lowerCone = $('#teleop_lower_cone').val();
+                        var upperCube = $('#teleop_upper_cube').val();
+                        var middleCube = $('#teleop_middle_cube').val();
+                        var lowerCube = $('#teleop_lower_cube').val();
                         var substation = document.querySelector('#substation:checked') !== null;
                         var ground = document.querySelector('#ground:checked') !== null;
                         var groundOrSub;
@@ -53,14 +49,14 @@
                         } else {
                                 groundOrSub = "NONE";
                         }
-                        var links = document.getElementById('#links').value;
+                        var links = $('#links').val();
                         var beforeEndgame = document.querySelector('#early_endgame:checked') !== null;
 
-                        var teleDock = document.getElementById("input:radio[name=endgame]:checked").value;
-                        var numDock = document.getElementById('#num_docked').value;
+                        var teleDock = $("input:radio[name=endgame]:checked").val();
+                        var numDock = $('#num_docked').val();
 
-                        var driveSkill = document.getElementById('#skill').value;
-                        var defenseSkill = document.getElementById('#defense').value;
+                        var driveSkill = $('#skill').val();
+                        var defenseSkill = $('#defense').val();
                         if (driveSkill == 1) {
                                 driveSkill = "Bad";
                         } else if (driveSkill == 2) {
@@ -84,32 +80,32 @@
                         var tipped = document.querySelector('#tipped:checked') !== null;
                         var card = document.querySelector('#card:checked') !== null;
                         var damage = document.querySelector('#damage:checked') !== null;
+                        var md5 = function(d){var r = M(V(Y(X(d),8*d.length)));return r.toLowerCase()};function M(d){for(var _,m="0123456789ABCDEF",f="",r=0;r<d.length;r++)_=d.charCodeAt(r),f+=m.charAt(_>>>4&15)+m.charAt(15&_);return f}function X(d){for(var _=Array(d.length>>2),m=0;m<_.length;m++)_[m]=0;for(m=0;m<8*d.length;m+=8)_[m>>5]|=(255&d.charCodeAt(m/8))<<m%32;return _}function V(d){for(var _="",m=0;m<32*d.length;m+=8)_+=String.fromCharCode(d[m>>5]>>>m%32&255);return _}function Y(d,_){d[_>>5]|=128<<_%32,d[14+(_+64>>>9<<4)]=_;for(var m=1732584193,f=-271733879,r=-1732584194,i=271733878,n=0;n<d.length;n+=16){var h=m,t=f,g=r,e=i;f=md5_ii(f=md5_ii(f=md5_ii(f=md5_ii(f=md5_hh(f=md5_hh(f=md5_hh(f=md5_hh(f=md5_gg(f=md5_gg(f=md5_gg(f=md5_gg(f=md5_ff(f=md5_ff(f=md5_ff(f=md5_ff(f,r=md5_ff(r,i=md5_ff(i,m=md5_ff(m,f,r,i,d[n+0],7,-680876936),f,r,d[n+1],12,-389564586),m,f,d[n+2],17,606105819),i,m,d[n+3],22,-1044525330),r=md5_ff(r,i=md5_ff(i,m=md5_ff(m,f,r,i,d[n+4],7,-176418897),f,r,d[n+5],12,1200080426),m,f,d[n+6],17,-1473231341),i,m,d[n+7],22,-45705983),r=md5_ff(r,i=md5_ff(i,m=md5_ff(m,f,r,i,d[n+8],7,1770035416),f,r,d[n+9],12,-1958414417),m,f,d[n+10],17,-42063),i,m,d[n+11],22,-1990404162),r=md5_ff(r,i=md5_ff(i,m=md5_ff(m,f,r,i,d[n+12],7,1804603682),f,r,d[n+13],12,-40341101),m,f,d[n+14],17,-1502002290),i,m,d[n+15],22,1236535329),r=md5_gg(r,i=md5_gg(i,m=md5_gg(m,f,r,i,d[n+1],5,-165796510),f,r,d[n+6],9,-1069501632),m,f,d[n+11],14,643717713),i,m,d[n+0],20,-373897302),r=md5_gg(r,i=md5_gg(i,m=md5_gg(m,f,r,i,d[n+5],5,-701558691),f,r,d[n+10],9,38016083),m,f,d[n+15],14,-660478335),i,m,d[n+4],20,-405537848),r=md5_gg(r,i=md5_gg(i,m=md5_gg(m,f,r,i,d[n+9],5,568446438),f,r,d[n+14],9,-1019803690),m,f,d[n+3],14,-187363961),i,m,d[n+8],20,1163531501),r=md5_gg(r,i=md5_gg(i,m=md5_gg(m,f,r,i,d[n+13],5,-1444681467),f,r,d[n+2],9,-51403784),m,f,d[n+7],14,1735328473),i,m,d[n+12],20,-1926607734),r=md5_hh(r,i=md5_hh(i,m=md5_hh(m,f,r,i,d[n+5],4,-378558),f,r,d[n+8],11,-2022574463),m,f,d[n+11],16,1839030562),i,m,d[n+14],23,-35309556),r=md5_hh(r,i=md5_hh(i,m=md5_hh(m,f,r,i,d[n+1],4,-1530992060),f,r,d[n+4],11,1272893353),m,f,d[n+7],16,-155497632),i,m,d[n+10],23,-1094730640),r=md5_hh(r,i=md5_hh(i,m=md5_hh(m,f,r,i,d[n+13],4,681279174),f,r,d[n+0],11,-358537222),m,f,d[n+3],16,-722521979),i,m,d[n+6],23,76029189),r=md5_hh(r,i=md5_hh(i,m=md5_hh(m,f,r,i,d[n+9],4,-640364487),f,r,d[n+12],11,-421815835),m,f,d[n+15],16,530742520),i,m,d[n+2],23,-995338651),r=md5_ii(r,i=md5_ii(i,m=md5_ii(m,f,r,i,d[n+0],6,-198630844),f,r,d[n+7],10,1126891415),m,f,d[n+14],15,-1416354905),i,m,d[n+5],21,-57434055),r=md5_ii(r,i=md5_ii(i,m=md5_ii(m,f,r,i,d[n+12],6,1700485571),f,r,d[n+3],10,-1894986606),m,f,d[n+10],15,-1051523),i,m,d[n+1],21,-2054922799),r=md5_ii(r,i=md5_ii(i,m=md5_ii(m,f,r,i,d[n+8],6,1873313359),f,r,d[n+15],10,-30611744),m,f,d[n+6],15,-1560198380),i,m,d[n+13],21,1309151649),r=md5_ii(r,i=md5_ii(i,m=md5_ii(m,f,r,i,d[n+4],6,-145523070),f,r,d[n+11],10,-1120210379),m,f,d[n+2],15,718787259),i,m,d[n+9],21,-343485551),m=safe_add(m,h),f=safe_add(f,t),r=safe_add(r,g),i=safe_add(i,e)}return Array(m,f,r,i)}function md5_cmn(d,_,m,f,r,i){return safe_add(bit_rol(safe_add(safe_add(_,d),safe_add(f,i)),r),m)}function md5_ff(d,_,m,f,r,i,n){return md5_cmn(_&m|~_&f,d,_,r,i,n)}function md5_gg(d,_,m,f,r,i,n){return md5_cmn(_&f|m&~f,d,_,r,i,n)}function md5_hh(d,_,m,f,r,i,n){return md5_cmn(_^m^f,d,_,r,i,n)}function md5_ii(d,_,m,f,r,i,n){return md5_cmn(m^(_|~f),d,_,r,i,n)}function safe_add(d,_){var m=(65535&d)+(65535&_);return(d>>16)+(_>>16)+(m>>16)<<16|65535&m}function bit_rol(d,_){return d<<_|d>>>32-_}
 
-                        var comment = document.getElementById('#comments').value;
-
-                        var finalArray = [name, matchNum, robotColor, teamNum, noShow, location, mobility, autoUpperCone,
+                        var comment = $('#comments').val();
+                        var md5_hash = md5(name+matchNum+teamNum);
+                        var finalArray = [username, password, name, matchNum, robotColor, teamNum, noShow, location, autoUpperCone,
                                 autoMiddleCone, autoLowerCone, autoUpperCube, autoMiddleCube, autoLowerCube,
-                                autoPickup, autoDock, upperCone, middleCone, lowerCone, upperCube, middleCube, lowerCube,
+                                mobility, autoPickup, autoDock, upperCone, middleCone, lowerCone, upperCube, middleCube, lowerCube,
                                 groundOrSub, links, beforeEndgame, teleDock, numDock, driveSkill, defenseSkill, died, tipped,
-                                card, damage, comment];
-                        finalString = finalArray.join("|");
+                                card, damage, comment, md5_hash];
+                        finalString = finalArray.join("~");
                         console.log(finalString);
-                        }
+                        // const xhr = new XMLHttpRequest();
+                        // xhr.open("POST", host);
+                        // xhr.setRequestHeader("X-PINGOTHER", "pingpong");
+                        // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+                        // xhr.onreadystatechange = () => {
+                        //     if (xhr.readyState === 4) {
+                        //         window.alert("Data Entered Successfully!");
+                        //     }
+                        // };
+                        // xhr.send("string=" + finalString);
+
+                        // Only GET requests can be used by a local file.
+                        window.open("http://"+host+"?string="+finalString) || window.location.replace("http://"+host+"?string="+finalString);
                 }
 
-
-                function hideErrorMessages() {
-
-                        const form = document.getElementById('scoutingForm');
-                        const fields = form.querySelectorAll(':required');
-
-                        fields.forEach((field) => {
-                                if (field.value) {
-                                        const errorMessage = document.getElementById(field.getAttribute("correspondingErrorId"));
-                                        errorMessage.style.display = 'none';
-                                }
-                        });
-                }
 
                 function hideAllErrorMessages() {
 
@@ -124,6 +120,11 @@
                 }
 
 
+                function hideQR() {
+                        QR.style.display = 'none';
+                        document.getElementById("QRText").style.display = "none"
+                        $('#barcode').attr('src', "");
+                }
 
                 function scrollToElement(element) {
                         // Get the top offset position of the element
@@ -142,6 +143,7 @@
                 function resetForm() {
                         // Get the value of the element with the ID "myElement"
                         var scouterInitial = document.getElementById("names").value;
+
                         // Reset the form
                         document.getElementById("scoutingForm").reset();
 
@@ -149,7 +151,7 @@
                         // to the value of the element with the ID "myElement"
                         setTimeout(function () {
                                 document.getElementById("names").value = scouterInitial;
-                                document.getElementById("textNumDocked").textContent = "Number of Docked Robots: 0";
+                                document.getElementById("textNumDocked").textContent = "Number of Docked Robots: 0"
                                 hideAllErrorMessages();
                                 scrollToElement(document.getElementById("top"));
                         }, 0);
@@ -187,6 +189,11 @@
                                 });
                 }
         </script>
+        <style>
+                #barcode {
+                        display: none;
+                }
+        </style>
 </head>
 
 <body>
@@ -196,24 +203,11 @@
                         <img src="images/pittRoboticsPfp.png" alt="" style="width: 37px;" style="height: 37px;">
                         <p class="h1Font">Team 3181 Scouting</p>
                 </div>
-                <div class="login">
-                        
-                                <p class="h1Font" style="color:pink"><br><strong>LOGIN</strong></p>
-                        <form>
-                                <div style="text-align:right;margin-right:40%">
-                                <label for="host">Host:</label>
-                                <input type="input" id="host">
-                                </div>
-                                <!-- Username for logging and password -->
-                                <div style="text-align:right;margin-right:40%">
-                                <label for="username">Username:</label>
-                                <input type="input" id="username">
-                                </div>
-                                <div style="text-align:right;margin-right:40%">
-                                <label for="password">Password:</label>
-                                <input type="password" id="password">
-                                </div>
-                        </form>
+                <div id="login" style="text-align: center;">
+                        <label for="host">Host:</label><input id="host"><br>
+                        <label for="username">Username:</label><input id="username"><br>
+                        <label for="password">Password:</label><input type="password" id="password">
+
                 </div>
 
                 <!-- Simple JS to implement buttons -->
@@ -690,19 +684,37 @@
                                         style="display: inline-block;">
                                         <h2>Clear Data</h2>
                                 </button>
+                                <br><br>
+
+                                <img id="barcode" style="display: none; margin:0 auto;" class="qrCode">
+                                <p id="qrtext" class="qrtext" style="display: none;">Something Went Wrong. Try Again.
+                                </p>
+                                <p id="QRText" style="display: none;"><b>Take a screenshot of this QR code and scan the
+                                                photo on James's
+                                                computer after
+                                                your mnatches are done.</b></p>
                         </div>
 
                         <script>
                                 const submitButton = document.getElementById('submit');
                                 const resetButton = document.getElementById('reset-button');
-                                
+                                const QR = document.getElementById('barcode');
+
                                 resetButton.addEventListener('click', (event) => {
+                                        hideQR();
                                         document.getElementById("top").scrollIntoView({ behavior: 'smooth' });
                                 });
 
                                 submitButton.addEventListener('click', (event) => {
                                         event.preventDefault(); // Prevent the form from submitting
-                                        send();
+                                        var screenWidth90 = window.innerWidth * 0.9;
+                                        var screenHeight90 = window.innerHeight * 0.9;
+                                        if (screenHeight90 < screenWidth90) {
+                                                screenWidth90 = screenHeight90;
+                                        }
+                                        document.getElementById("barcode").style.width = `${screenWidth90}px`;
+                                        document.getElementById("barcode").style.height = `${screenWidth90}px`;
+                                        remoteConnect();
                                 });
                         </script>
 
@@ -711,4 +723,4 @@
         </div>
 </body>
 
-</html>document.getElementByIddocument.getElementById
+</html>

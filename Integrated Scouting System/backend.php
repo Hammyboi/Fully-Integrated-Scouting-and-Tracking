@@ -75,7 +75,7 @@ if(empty($damage)){
     
     //setting up database connection
     $host = "localhost";
-    $username = "root";
+    $username = "api";
     $password = "";
     $dbname = "scouting2023";
 
