@@ -9,6 +9,7 @@ You will need to change the database name
 Every year, add a new table to the database using the server/api/models.py file.
 Then, run 'python server/server.py makemigrations' and 'python server/server.py migrate' to create the necessary database tables.
 'python backend.py' runs the server.
+You can run the backend and the mysql database on separate servers, or use a tool like xampp to run both from same machine (recommended)
 
 TODO:
 Make a homepage
