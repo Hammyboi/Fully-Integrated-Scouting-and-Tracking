@@ -1,0 +1,48 @@
+{% extends "base_generic.html" %}
+{% block title %}
+    <title>Team 3181 Scouting Signup</title>
+{% endblock %}
+{% block content %}
+{% if permitted %}
+<h1>You are already signed in as {{ user.get_username }}</h1>
+<p><i>You have permission to access the Scouting API.</i></p>
+{% elif logged_in %}
+<h1>You are already signed in as {{ user.get_username }}</h1>
+<p><i>You do not have permission to access the Scouting API. (Likely your account is newly created and awaiting approval from an admin.)</i></p>
+{% else %}
+{% if status == 'not_confirmed' %}
+    <script>window.alert('The passwords entered do not match')</script>
+{% elif status == 'success' %}
+    <script>window.alert('Account created successfully, redirecting you to log in page.');window.location.replace('/accounts/login')</script>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+        <div style="text-align: center;">
+        <h1>Sign Up for Scouting API Access</h1>
+        <p><i>Note: All fields must be filled out.</i></p>
+        <table>
+        <tr>
+        <td><label for="firstname">First Name:</label>
+        <input type="text" name="firstname" required></td>
+        <td><label for="lastname">Last Name:</label>
+        <input type="text" name="lastname" required></td>
+        <td><label for="email">Email Address:</label>
+        <input type="email" name="email" required></td>
+        </tr>
+        <tr>
+        <td><label for="username">Username:</label>
+        <input type="text" name="username" required></td>
+        <td><label for="password">Password:</label>
+        <input type="password" name="password" required></td>
+        <td><label for="confirm">Confirm Password:</label>
+        <input type="password" name="confirm" required></td>
+        </tr>
+        <tr>
+        <td><input type="submit" value="Sign Up"></td>
+        </tr>
+        </table>
+
+        </div>
+</form>
+{% endif %}
+{% endblock %}

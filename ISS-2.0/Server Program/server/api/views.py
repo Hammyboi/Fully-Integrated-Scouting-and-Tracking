@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 
 # Create your views here.
 from django.http import HttpResponse
@@ -43,3 +44,32 @@ def index(request):
         
     else:
         return HttpResponse(index.render({}, request))
+def signup(request):
+    template = loader.get_template('signup.html')
+    context = {
+
+    }
+    if request.user.groups.filter(name__in=settings['allowed_groups']).exists():
+
+        context['permitted'] = True
+        context['logged_in'] = True
+    elif request.user.is_authenticated:
+        context['permitted'] = False
+        context['logged_in'] = True
+    else:
+        context['logged_in'] = False
+    if request.META['REQUEST_METHOD'] == "POST":
+        first_name = request.POST.get("firstname", '')
+        last_name = request.POST.get("lastname", '')
+        email = request.POST.get("email", '')
+        username = request.POST.get("username", '')
+        password = request.POST.get("password", '')
+        confirm = request.POST.get("confirm", '')
+        if password == confirm:
+            new_user = User.objects.create_user(username, email, password,first_name=first_name, last_name=last_name)
+            new_user.save()
+            context['status'] = "success"
+        else:
+            context['status'] = "not_confirmed"
+    
+    return HttpResponse(template.render(context, request))
